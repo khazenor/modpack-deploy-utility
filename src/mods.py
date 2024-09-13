@@ -38,6 +38,11 @@ clientSideModNames = [
 	'iris-neoforge',
 	'sodium-neoforge',
 	'ExtremeSoundMuffler',
+	'ProbeJS',
+	'NBTcopy'
+]
+
+devOnlyMods = [
 	'ProbeJS'
 ]
 
@@ -54,27 +59,31 @@ def deployMods():
 
 def deployToClients():
 	log.log(' # Deploy Clients')
-	clientInsts = paths.otherInsts + [paths.configSrc]
-	for clientInst in clientInsts:
-		util.copyFolder(
-			modsSrc(),
-			clientInst
-		)
+	util.copyFolder(
+		modsSrc(),
+		paths.configSrc
+	)
+	for clientInst in paths.otherInsts:
+		copyModsFolderWithDenyList(clientInst, devOnlyMods)
 
 def deployToServers():
 	log.log(' # Deploy Servers')
 	for serverInst in paths.servers:
-		serverModsFolder = instMods(serverInst)
-		util.removeExtraFilesRecur(
-			modsSrc(),
-			serverModsFolder,
-			removeSubStrList=clientSideModNames
-		)
-		util.copyFolderRecur(
-			modsSrc(),
-			serverInst,
-			denySubStrList=clientSideModNames
-		)
+		copyModsFolderWithDenyList(serverInst, clientSideModNames)
+
+def copyModsFolderWithDenyList(inst, denyList):
+	instModsFolder = instMods(inst)
+	util.removeExtraFilesRecur(
+		modsSrc(),
+		instModsFolder,
+		removeSubStrList=denyList
+	)
+	util.copyFolderRecur(
+		modsSrc(),
+		inst,
+		denySubStrList=denyList
+	)
+
 
 def deployDevMods():
 	devModsFolder = os.path.join(paths.configSrc, 'mods_dev', modsFolder)
