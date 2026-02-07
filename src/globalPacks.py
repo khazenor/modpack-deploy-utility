@@ -4,7 +4,7 @@ import os
 globalPacksFolderName = 'global_packs'
 requiredDataFolderNames = [
 	'required_data',
-	'fc_datapacks'
+	'fc_packs'
 ]
 requiredResourceFolderName = 'required_resources'
 
@@ -16,11 +16,11 @@ def deployGlobalPacks():
 def copyDatapacks():
 	log.log(' # Copying Global Datapacks')
 	deployInsts = [paths.modsSrc] + paths.otherInsts + paths.servers
-	for requiredDataFolderName in requiredDataFolderNames:
+	for dataFolderName in requiredDataFolderNames:
 		util.simpleDeploy(
 			paths.configSrc,
 			deployInsts,
-			os.path.join(globalPacksFolderName, requiredDataFolderName)
+			os.path.join(globalPacksFolderName, dataFolderName)
 		)
 
 def copyResources():

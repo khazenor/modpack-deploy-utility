@@ -4,6 +4,8 @@ modsSrc = ''
 
 otherInsts = []
 
+exportInsts = []
+
 servers = []
 
 dropboxDeployScriptLoc = ''

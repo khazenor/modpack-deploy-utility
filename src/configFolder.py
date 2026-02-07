@@ -11,14 +11,10 @@ foldersToDeleteExtrasFrom = [
 ]
 
 personalConfigs = [
-	'-client.toml',
-	'config\\defaultoptions\\options.txt',
 	'config\\defaultoptions\\optionsof.txt',
 	'config\\defaultoptions\\servers.dat',
 	'config\\brb.toml',
-	'config\\xaerominimap.txt',
 	'config\\xaeropatreon.txt',
-	'config\\xaeroworldmap.txt',
 	'config\\xaerominimap_entities.json',
 	'config\\xaerominimap-common.txt',
 	'config\\xaeroworldmap-common.txt',
@@ -35,9 +31,12 @@ def deployConfigs():
 	deployInsts = [paths.modsSrc] + paths.otherInsts + paths.servers
 	for deployInst in deployInsts:
 		deleteExtraConfigs(deployInst)
+		destConfigFolderPath = os.path.join(deployInst, configFolderName)
+		if not os.path.exists(destConfigFolderPath):
+			os.makedirs(destConfigFolderPath)
 		util.copyFolderRecur(
 			os.path.join(paths.configSrc, configFolderName),
-			deployInst,
+			destConfigFolderPath + '\\..',
 			allowSubStrList=clientConfigsToCopy,
 			denySubStrList=personalConfigs
 		)

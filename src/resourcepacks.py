@@ -10,7 +10,7 @@ resourceFolderName = 'resourcepacks'
 def deployResourcepacks():
 	log.log('## Deploy Resourcepacks ... ')
 	copyClients()
-	copyServers()
+	# copyServers()
 
 def copyClients():
 	log.log(' # Updating clients')
