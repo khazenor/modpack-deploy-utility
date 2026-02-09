@@ -2,7 +2,6 @@ from src import util, paths, log
 import os
 
 clientSideModNames = [
-	'resolution-control-plus-plus',
 	'badhorsefix'
 	'badpackets',
 	'BetterAdvancements',
@@ -27,6 +26,7 @@ clientSideModNames = [
 	'gpumemleakfix',
 	'guicompass',
 	'InventoryProfilesNext',
+	'iris-flywheel-compat',
 	'iris-neoforge',
 	'Ksyxis',
 	'lambdynamiclights',
@@ -36,11 +36,14 @@ clientSideModNames = [
 	'NBTcopy',
 	'NekosEnchantedBooks',
 	'oculus',
+	'onscreenkeyboard',
 	'probejs',
 	'ProbeJS',
 	'realcamera',
+	'resolution-control-plus-plus',
 	'rubidium',
 	'RubidiumExtra',
+	'simpletextoverlay',
 	'sodium-neoforge',
 	'sodiumdynamiclights',
 	'sodiumoptionsapi',
@@ -55,11 +58,10 @@ clientSideModNames = [
 	'Xaeros_Minimap',
 	'XaerosWorldMap',
 	"DrawersTooltip",
-	"ShoulderSurfing",
 	"more-enchantment-info",
-	"shulkerboxtooltip",
 	"obscuraspanoramica",
-	'onscreenkeyboard',
+	"ShoulderSurfing",
+	"shulkerboxtooltip",
 ]
 
 devOnlyMods = [
